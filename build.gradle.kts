@@ -36,6 +36,7 @@ dependencies {
     implementation("com.zaxxer:HikariCP:$hikariCpVersion")
     implementation("org.flywaydb:flyway-core:$flywayVersion")
     implementation("ch.qos.logback:logback-classic:$logbackVersion")
+    implementation("org.postgresql:postgresql:42.2.24")
 
     testImplementation("org.assertj:assertj-core:$assertjVersion")
     testImplementation("io.rest-assured:rest-assured:$restAssuredVersion")
