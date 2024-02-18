@@ -3,7 +3,7 @@ FROM gradle:8-jdk20 AS build
 USER gradle
 WORKDIR /app
 
-COPY build.gradle settings.gradle ./
+COPY build.gradle.kts settings.gradle ./
 COPY src/ ./src
 
 RUN gradle installDist --no-daemon
