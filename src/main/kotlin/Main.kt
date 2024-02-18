@@ -1,6 +1,7 @@
 import io.ktor.serialization.kotlinx.*
 import io.ktor.serialization.kotlinx.json.*
 import io.ktor.server.application.*
+import io.ktor.server.cio.*
 import io.ktor.server.engine.*
 import io.ktor.server.netty.*
 import io.ktor.server.plugins.callloging.*
@@ -9,10 +10,9 @@ import io.ktor.server.plugins.defaultheaders.*
 import io.ktor.server.routing.*
 import io.ktor.server.websocket.*
 import service.DatabaseFactory
-import service.WidgetService
+import service.TaskService
 import util.JsonMapper
 import web.index
-import web.widget
 
 fun Application.module() {
     install(DefaultHeaders)
@@ -27,15 +27,13 @@ fun Application.module() {
 
     DatabaseFactory.connectAndMigrate()
 
-    val widgetService = WidgetService()
+    val taskService = TaskService()
 
     install(Routing) {
-        index()
-        widget(widgetService)
+        index(taskService)
     }
-
 }
 
 fun main(args: Array<String>) {
-    embeddedServer(Netty, commandLineEnvironment(args)).start(wait = true)
+    embeddedServer(CIO, commandLineEnvironment(args)).start(wait = true)
 }

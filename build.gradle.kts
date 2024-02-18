@@ -1,5 +1,5 @@
 val ktorVersion = "2.3.6"
-val exposedVersion = "0.44.1"
+val exposedVersion = "0.47.0"
 val h2Version = "2.2.224"
 val hikariCpVersion = "5.1.0"
 val flywayVersion = "10.0.0"
@@ -23,6 +23,7 @@ dependencies {
     implementation("io.ktor:ktor-server-core:$ktorVersion")
     implementation("io.ktor:ktor-serialization:$ktorVersion")
     implementation("io.ktor:ktor-server-netty:$ktorVersion")
+    implementation("io.ktor:ktor-server-cio:$ktorVersion")
     implementation("io.ktor:ktor-server-call-logging:$ktorVersion")
     implementation("io.ktor:ktor-server-default-headers:$ktorVersion")
     implementation("io.ktor:ktor-server-websockets:$ktorVersion")

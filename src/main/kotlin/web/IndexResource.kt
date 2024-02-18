@@ -4,12 +4,14 @@ import io.ktor.http.*
 import io.ktor.server.application.*
 import io.ktor.server.response.*
 import io.ktor.server.routing.*
+import service.TaskService
 
-fun Route.index() {
-
-    val indexPage = javaClass.getResource("/index.html").readText()
-
+fun Route.index(taskService: TaskService) {
     get("/") {
-        call.respondText(indexPage, ContentType.Text.Html)
+        val tasks = taskService.getAll()
+        val response = mapOf(
+            "data" to tasks
+        )
+        call.respond(response)
     }
 }
