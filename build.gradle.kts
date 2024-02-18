@@ -5,7 +5,7 @@ val hikariCpVersion = "5.1.0"
 val flywayVersion = "10.8.1"
 val logbackVersion = "1.4.14"
 val assertjVersion = "3.24.2"
-val restAssuredVersion = "5.3.2"
+val restAssuredVersion = "5.4.0"
 val junitVersion = "5.10.1"
 
 plugins {
