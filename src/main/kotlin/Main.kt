@@ -35,5 +35,5 @@ fun Application.module() {
 }
 
 fun main(args: Array<String>) {
-    embeddedServer(CIO, commandLineEnvironment(args)).start(wait = true)
+    embeddedServer(Netty, commandLineEnvironment(args)).start(wait = true)
 }

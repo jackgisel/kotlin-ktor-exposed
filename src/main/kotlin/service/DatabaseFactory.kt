@@ -23,7 +23,7 @@ object DatabaseFactory {
 
     private fun hikari(): HikariDataSource {
         val config = HikariConfig().apply {
-            jdbcUrl = "jdbc:${System.getenv("DATABASE_PRIVATE_URL")}"
+            jdbcUrl = "jdbc:postgresql://${System.getenv("PGHOST")}:${System.getenv("PGPORT")}/${System.getenv("PGDATABASE")}"
             driverClassName = "org.postgresql.Driver"
             username = System.getenv("PGUSER").toString()
             password = System.getenv("PGPASSWORD").toString()
