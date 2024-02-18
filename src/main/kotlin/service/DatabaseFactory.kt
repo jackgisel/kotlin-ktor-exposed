@@ -22,15 +22,15 @@ object DatabaseFactory {
     }
 
     private fun hikari(): HikariDataSource {
+        val path = System.getenv("DATABASE_PRIVATE_URL").split("@")[1]
+        println("jdbc:postgresql://$path")
+        println(System.getenv("PGUSER"))
+        println(System.getenv("PGPASSWORD"))
         val config = HikariConfig().apply {
-            jdbcUrl = "jdbc:postgresql://${System.getenv("PGHOST")}:${System.getenv("PGPORT")}/${System.getenv("PGDATABASE")}"
+            jdbcUrl = "jdbc:postgresql://$path"
             driverClassName = "org.postgresql.Driver"
-            username = System.getenv("PGUSER").toString()
-            password = System.getenv("PGPASSWORD").toString()
-            maximumPoolSize = 3
-            isAutoCommit = false
-            transactionIsolation = "TRANSACTION_REPEATABLE_READ"
-            validate()
+            username = System.getenv("PGUSER")
+            password = System.getenv("PGPASSWORD")
         }
         return HikariDataSource(config)
     }
